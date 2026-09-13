@@ -1,0 +1,51 @@
+/* Figma tool-shell sidebar — 112px wide, white bg, top-aligned icon+label
+   list, active item ("AI Video") tinted brand-blue. */
+
+.auto-edit-sidebar {
+  width: 112px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid var(--ae-stroke-weak);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.auto-edit-sidebar__item {
+  width: 96px;
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--ae-text-weak);
+}
+
+.auto-edit-sidebar__item:hover {
+  background: var(--ae-fill-weak);
+}
+
+.auto-edit-sidebar__item--active {
+  background: var(--ae-brand-weak);
+  color: var(--pf-light-blue);
+}
+
+.auto-edit-sidebar__label {
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  line-height: 14px;
+  text-align: center;
+}
+
+/* Figma's own breakpoint spec (1920 -> 769px) keeps this sidebar a fixed
+   112px icon+label rail at every width — it never collapses to icon-only in
+   that tested range, so this page intentionally does not add a collapse
+   breakpoint either (see auto-edit-spec-responsive.md open question #4). */

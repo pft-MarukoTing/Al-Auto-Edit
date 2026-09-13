@@ -1,0 +1,41 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Figma "My Voices Empty State" illustration (node 14750:281517), rebuilt
+       from the actual exported sub-assets (the waveform card "Video", the
+       mic glyph "Group 74907", and the two sparkle diamonds) rather than a
+       from-scratch approximation — get_screenshot only ever returns this
+       node at its native 120x120px, which read as soft/blurry once shown
+       larger than that, and hand-drawing generic bar/mic shapes didn't match
+       Figma's actual artwork closely enough. Positions/rotations here are
+       matched by eye against the Figma screenshot since the source uses
+       container-query-relative transforms that don't translate 1:1 to a
+       static SVG. -->
+
+  <!-- Waveform card (Figma "Video"), tilted back-left -->
+  <g transform="translate(14 22) rotate(-10)">
+    <rect width="78" height="61" rx="10" fill="#ffffff" stroke="#e4e6e8" stroke-width="1.5" />
+    <g stroke="#535454" stroke-width="3.6" stroke-linecap="round">
+      <line x1="19" y1="21" x2="19" y2="40" />
+      <line x1="27" y1="14" x2="27" y2="47" />
+      <line x1="35" y1="10" x2="35" y2="51" />
+      <line x1="43" y1="18" x2="43" y2="43" />
+      <line x1="51" y1="14" x2="51" y2="47" />
+      <line x1="59" y1="22" x2="59" y2="39" />
+    </g>
+  </g>
+
+  <!-- Mic card (Figma "Img" container + "Group 74907"), tilted forward-right,
+       overlapping the bottom-right of the waveform card -->
+  <g transform="translate(44 46) rotate(12)">
+    <rect width="62" height="56" rx="8" fill="#f7f7f7" stroke="#eceded" stroke-width="1.5" />
+    <g transform="translate(19 10)">
+      <path d="M14.6 4.05C14.6 1.81 12.63 0 10.2 0S5.8 1.81 5.8 4.05v6.94c0 2.24 1.97 4.05 4.4 4.05s4.4-1.81 4.4-4.05V4.05Z" fill="#555759" />
+      <path d="M3 10.7v.87c0 4.34 3.23 7.86 7.2 7.86s7.2-3.52 7.2-7.86v-.87M10.2 19.43v3.87M6.6 23.6h7.2" stroke="#afafaf" stroke-width="2.1" stroke-linecap="round" fill="none" />
+    </g>
+  </g>
+
+  <!-- Sparkles -->
+  <g fill="#000" opacity="0.45">
+    <path d="M17.9 88.2c-.55-1.24.53-2.53 1.83-2.14l5.5 1.65c2.7.81 5.6.72 8.24-.26l3.28-1.22c1.24-.46 2.44.79 1.93 2.02l-1.36 3.24c-1.13 2.7-1.2 5.72-.2 8.47l1.87 5.16c.45 1.24-.8 2.4-2.02 1.9l-4.32-1.78c-3.02-1.24-6.4-1.24-9.42 0l-2.9 1.19c-1.24.51-2.44-.75-1.93-1.98l1.42-3.44c1.42-3.44 1.42-7.3 0-10.75l-1.92-4.06Z" />
+    <path d="M91.6 25.7l1.36 2.7c.83 1.66 2.3 2.92 4.05 3.5l2.28.75c1.02.34 1.02 1.78 0 2.11l-2.3.76c-1.74.58-3.2 1.83-4.04 3.48l-1.35 2.66c-.48.95-1.84.95-2.32 0l-1.34-2.66c-.84-1.65-2.3-2.9-4.03-3.48l-2.3-.76c-1.03-.33-1.03-1.77 0-2.11l2.28-.75c1.74-.58 3.2-1.84 4.04-3.5l1.35-2.7c.47-.95 1.83-.95 2.32 0Z" />
+  </g>
+</svg>

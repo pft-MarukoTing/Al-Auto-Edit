@@ -1,0 +1,134 @@
+/* Figma "Auto-Edit" header — 64px tall, white bg, logo left / title centered /
+   credits+avatar right. Shared across every Auto-Edit frame. */
+
+.auto-edit-header {
+  height: 64px;
+  flex-shrink: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--ae-stroke-weak);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  gap: 16px;
+}
+
+.auto-edit-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.auto-edit-header__logo-symbol {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.auto-edit-header__logo-youcam {
+  height: 25px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.auto-edit-header__logo-online-editor {
+  height: 18px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.auto-edit-header__title {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  margin: 0;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.auto-edit-header__actions {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.auto-edit-header__credits {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 40px;
+  background: var(--ae-fill-weak);
+  border-radius: var(--radius-pill);
+  padding: 0 8px;
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+}
+
+.auto-edit-header__credits-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.auto-edit-header__credits span {
+  padding: 0 4px;
+}
+
+.auto-edit-header__credits-add {
+  width: 26px;
+  height: 26px;
+  border-radius: 24px;
+  border: none;
+  background: var(--ae-fill-weak);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 3px;
+  outline: none;
+}
+
+.auto-edit-header__credits-add img {
+  width: 100%;
+  height: 100%;
+}
+
+.auto-edit-header__avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.auto-edit-header__avatar-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.auto-edit-header__avatar-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .auto-edit-header__logo-youcam,
+  .auto-edit-header__logo-online-editor {
+    display: none;
+  }
+}

@@ -1,0 +1,188 @@
+/* Shared modal chrome reused by SettingsModal / DescribeClipsModal /
+   VoiceOverStyleModal / VoiceCloneModal — see each build spec's "Modal shell"
+   section. Imported once by each modal's own stylesheet. */
+
+.ae-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 22, 26, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.ae-modal {
+  background: #fff;
+  border: 1px solid var(--ae-stroke-weak);
+  border-radius: 16px;
+  box-shadow: var(--ae-shadow-overlay);
+  width: 500px;
+  max-width: 100%;
+  /* A definite height (not just max-height) is required here: several modal
+     bodies use `flex: 1 0 0` to fill remaining space and scroll internally
+     (see .ae-modal__body below). Without a definite height on this flex
+     column, the browser has no "remaining space" to give that flex-basis:0
+     child, so it collapses to 0 height instead of growing — the modal looked
+     like it was missing all its body content until this was added. 600px
+     matches every modal shell's own Figma spec (Settings/Describe
+     clips/Voice-Over Style/Voice Clone are all 500-600px tall); min() keeps
+     it from overflowing a short viewport. */
+  height: min(600px, 85vh);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 24px;
+  position: relative;
+}
+
+.ae-modal--wide {
+  width: 600px;
+}
+
+.ae-modal--narrow {
+  width: 420px;
+  /* Import-preview / Delete-confirm dialogs are short, content-hugging
+     dialogs (no internally-scrolling flex:1 body) — force back to auto so
+     they don't inherit the 600px default above. */
+  height: auto;
+}
+
+.ae-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  color: var(--ae-text-weak);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ae-modal__heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 48px;
+  flex-shrink: 0;
+}
+
+.ae-modal__heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  margin: 0;
+}
+
+.ae-modal__subtext {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ae-text-weak);
+  margin: 0;
+}
+
+.ae-modal__credit-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  flex-shrink: 0;
+}
+
+.ae-modal__credit-pill img {
+  width: 20px;
+  height: 20px;
+}
+
+.ae-modal__body {
+  flex: 1 0 0;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ae-modal__footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ae-btn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ae-btn--outline {
+  background: transparent;
+  border: 1px solid var(--ae-stroke-strong);
+  color: var(--ae-text-strong);
+}
+
+.ae-btn--primary {
+  background: var(--ae-brand);
+  color: #fff;
+}
+
+.ae-btn--brand-outline {
+  background: transparent;
+  border: 1px solid var(--ae-brand-strong-border);
+  color: var(--ae-brand);
+}
+
+.ae-btn--danger {
+  background: var(--ae-error);
+  color: #fff;
+}
+
+.ae-btn--small {
+  height: 32px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 12px;
+}
+
+.ae-btn:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.ae-btn__credits {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  font-size: 14px;
+}
+
+.ae-btn__credits img {
+  width: 16px;
+  height: 16px;
+}

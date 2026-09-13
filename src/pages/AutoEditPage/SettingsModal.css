@@ -1,0 +1,138 @@
+@import './AutoEditModals.css';
+
+.ae-modal--settings {
+  width: 500px;
+}
+
+.settings-modal__body {
+  gap: 20px;
+}
+
+.settings-modal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-modal__section--disabled {
+  opacity: var(--opacity-disabled);
+}
+
+.settings-modal__label {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  margin: 0;
+}
+
+.settings-modal__option-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.settings-modal__option-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.settings-modal__option {
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--ae-stroke-strong);
+  background: #fff;
+  color: var(--ae-text-strong);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.settings-modal__option--selected {
+  border: 2px solid var(--ae-brand);
+  color: var(--ae-brand);
+}
+
+.settings-modal__option:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.settings-modal__select {
+  grid-column: 1 / -1;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--ae-stroke-strong);
+  background: #fff;
+  color: var(--ae-text-strong);
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  padding: 0 12px;
+}
+
+.settings-modal__ratio-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.settings-modal__ratio-swatch--9-16 {
+  width: 10px;
+  height: 16px;
+}
+
+.settings-modal__ratio-swatch--16-9 {
+  width: 16px;
+  height: 10px;
+}
+
+.settings-modal__ratio-swatch--1-1 {
+  width: 13px;
+  height: 13px;
+}
+
+.settings-modal__toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-modal__toggle {
+  width: 38px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--ae-stroke-strong);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.settings-modal__toggle--on {
+  background: var(--ae-brand);
+  justify-content: flex-end;
+}
+
+.settings-modal__toggle-knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+}
+
+.settings-modal__hint {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ae-text-weaker);
+  margin: 0;
+}

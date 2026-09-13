@@ -1,0 +1,276 @@
+@import './AutoEditModals.css';
+
+.voice-over-modal__tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ae-stroke-weak);
+  flex-shrink: 0;
+}
+
+.voice-over-modal__tab {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 0 0 12px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+  margin-bottom: -1px;
+}
+
+.voice-over-modal__tab--active {
+  color: var(--ae-brand);
+  border-bottom-color: var(--ae-brand);
+}
+
+.voice-over-modal__body {
+  position: relative;
+}
+
+.voice-over-modal__filter-row {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.voice-over-modal__combobox {
+  flex: 1 0 0;
+  position: relative;
+  border: 1px solid var(--ae-stroke-weak);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.voice-over-modal__combobox select {
+  flex: 1 0 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  padding: 8px 0;
+  appearance: none;
+}
+
+.voice-over-modal__filter-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 48px;
+  border: 1px solid var(--ae-stroke-strong);
+  background: #fff;
+  color: var(--ae-text-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.voice-over-modal__filter-popover {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.16);
+  z-index: 5;
+}
+
+.voice-over-modal__filter-popover h4 {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  margin: 0 0 8px;
+}
+
+.voice-over-modal__filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.voice-over-modal__filter-tag {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: 1px solid var(--ae-stroke-strong);
+  background: #fff;
+  color: var(--ae-text-strong);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.voice-over-modal__filter-tag--selected {
+  border: 2px solid var(--ae-brand);
+  color: var(--ae-brand);
+}
+
+.voice-over-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Sample Voices rows are real <button>s now (the whole row is clickable, not
+   just the tag chip) — reset the default button chrome and let the existing
+   flex/padding rules lay it out the same as before. */
+.voice-over-modal__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 16px;
+  border-radius: 8px;
+  min-height: 52px;
+  width: 100%;
+  border: 1px solid transparent;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.voice-over-modal__row:hover {
+  background: var(--ae-fill-weak);
+}
+
+.voice-over-modal__row--active,
+.voice-over-modal__row--active:hover {
+  background: var(--ae-brand-weak);
+  border: 1px solid var(--ae-brand-stroke-weak);
+}
+
+.voice-over-modal__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #c9ced7;
+}
+
+.voice-over-modal__row-name {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voice-over-modal__style-tag {
+  border: 1px solid var(--ae-stroke-weak);
+  border-radius: 4px;
+  padding: 6px 4px;
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  color: var(--ae-text-strong);
+  cursor: pointer;
+}
+
+.voice-over-modal__play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ae-brand-strong-border);
+  background: #fff;
+  color: var(--ae-text-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.voice-over-modal__play-btn--large {
+  width: 56px;
+  height: 56px;
+}
+
+.voice-over-modal__delete-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  color: var(--ae-text-weak);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.voice-over-modal__empty {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.voice-over-modal__empty-icon {
+  width: 120px;
+  height: 120px;
+}
+
+.voice-over-modal__empty h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: var(--font-weight-semibold);
+  color: #000;
+  margin: 0;
+}
+
+.voice-over-modal__empty p {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ae-text-weak);
+  margin: 0;
+}
+
+.voice-over-modal__my-voices-footer {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+}
+
+/* Both CTAs stretch to fill the row evenly (Figma's "Import"/"Record" pair is
+   a 249px-wide centered group of two equal-width buttons, not
+   content-sized). */
+.voice-over-modal__my-voices-footer .ae-btn {
+  flex: 1;
+}
+
+.voice-over-modal__row--preview {
+  padding: 0;
+}
+
+.voice-over-modal__preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.voice-over-modal__preview-info span {
+  font-size: 12px;
+  color: var(--ae-text-weak);
+}

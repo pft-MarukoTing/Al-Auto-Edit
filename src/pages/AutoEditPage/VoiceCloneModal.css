@@ -1,0 +1,188 @@
+@import './AutoEditModals.css';
+
+.voice-clone-modal__overlay {
+  background: transparent;
+  /* the parent VoiceOverStyleModal's own overlay already dims the page — this
+     inner overlay just needs to center the Voice Clone dialog above it. */
+}
+
+.voice-clone-modal__heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-right: 48px;
+}
+
+.voice-clone-modal__subtext {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ae-text-weak);
+  margin: 0;
+}
+
+.voice-clone-modal__accent {
+  color: var(--ae-brand);
+}
+
+.voice-clone-modal__body {
+  flex: 1 0 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.voice-clone-modal__body--dimmed > *:not(.voice-clone-modal__center) {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
+}
+
+.voice-clone-modal__combobox {
+  width: 100%;
+  border: 1px solid var(--ae-stroke-weak);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.voice-clone-modal__combobox.is-disabled {
+  opacity: var(--opacity-disabled);
+}
+
+.voice-clone-modal__combobox select {
+  flex: 1 0 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-text-strong);
+  padding: 8px 0;
+  appearance: none;
+}
+
+.voice-clone-modal__script-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.voice-clone-modal__script-text {
+  width: 100%;
+  background: var(--ae-fill-weak);
+  border: 0.6px solid var(--ae-stroke-weak);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #393939;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.voice-clone-modal__refresh-btn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--ae-stroke-strong);
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--ae-text-strong);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.voice-clone-modal__refresh-btn:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.voice-clone-modal__center {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.voice-clone-modal__record-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.voice-clone-modal__record-btn--idle {
+  background: var(--ae-text-strong);
+  color: #fff;
+  border: none;
+}
+
+.voice-clone-modal__record-btn--recording {
+  background: transparent;
+  color: #de0000;
+  border: 1.17px solid rgba(222, 0, 0, 0.8);
+}
+
+.voice-clone-modal__record-btn--preview {
+  background: transparent;
+  color: var(--ae-text-strong);
+  border: 1.17px solid var(--ae-stroke-strong);
+}
+
+.voice-clone-modal__center-label {
+  font-size: 14px;
+  color: #000;
+}
+
+/* The spinning ring is a separate ::before layer so the rotation never
+   touches the percentage text itself (rotating the text's own container
+   would flip it upside-down mid-spin). */
+.voice-clone-modal__spinner {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--ae-brand);
+}
+
+.voice-clone-modal__spinner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid var(--ae-fill-weak);
+  border-top-color: var(--ae-brand);
+  animation: voice-clone-spin 1.2s linear infinite;
+}
+
+@keyframes voice-clone-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.voice-clone-modal__footer--dimmed {
+  opacity: var(--opacity-disabled);
+}

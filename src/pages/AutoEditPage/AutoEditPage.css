@@ -1,0 +1,144 @@
+/* AI Auto-Edit — Figma "v 1.36.0_261014_Auto-Edit" (node 14442:166410).
+ *
+ * This is a standalone tool page with its own light visual language — the
+ * "YouCam Online Editor" shell is a different product chrome from YCM's own
+ * dark AppLayout/Sidebar (see CLAUDE.md's page-structure rules; this is why
+ * it gets its own route + layout instead of reusing AppLayout). Every color
+ * below is scoped to `.auto-edit-page` rather than added to the shared
+ * tokens.css, since most of Figma's raw values here (rgba(17,24,26,*)-based
+ * neutrals) don't match tokens.css's own neutral scale (rgba(9,9,11,*)-based)
+ * — see auto-edit-spec-*.md's color-reference tables for the full mapping
+ * attempt. `--pf-light-blue` (brand blue) is the one color that maps exactly,
+ * so it's reused directly from tokens.css everywhere below.
+ */
+
+.auto-edit-page {
+  /* Text */
+  --ae-text-strong: rgba(9, 22, 26, 0.95);
+  --ae-text-weak: rgba(17, 24, 26, 0.65);
+  --ae-text-weaker: rgba(17, 24, 26, 0.45);
+  --ae-text-disabled: rgba(17, 24, 26, 0.2);
+
+  /* Fills / strokes */
+  --ae-bg: #f5f9fa;
+  --ae-fill-weak: rgba(17, 24, 26, 0.04);
+  --ae-fill-disabled: rgba(17, 24, 26, 0.2);
+  --ae-stroke-weak: rgba(17, 24, 26, 0.1);
+  --ae-stroke-strong: rgba(17, 24, 26, 0.2);
+
+  /* Brand (exact match to tokens.css) */
+  --ae-brand: var(--pf-light-blue);
+  --ae-brand-strong-border: var(--pf-light-blue-80);
+  --ae-brand-weak: rgba(3, 173, 226, 0.05);
+  --ae-brand-stroke-weak: rgba(3, 173, 226, 0.2);
+
+  /* Warning (Near Limit banner / storage bar) */
+  --ae-warning: #ef9b00;
+  --ae-warning-weak: rgba(255, 192, 46, 0.05);
+  --ae-warning-stroke: rgba(239, 155, 0, 0.8);
+
+  /* Error/destructive — Figma's own #de0000 here is a different red from the
+     shared --pf-red token (#ff2600); kept distinct per the build spec's flag
+     rather than silently substituted. */
+  --ae-error: #de0000;
+
+  /* Shadows */
+  --ae-shadow-overlay: 0px 8px 24px -4px rgba(0, 0, 0, 0.16);
+  --ae-shadow-footer: 0px -2px 2px rgba(0, 0, 0, 0.08), 0px -4px 4px rgba(0, 0, 0, 0.04);
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ae-bg);
+  font-family: var(--font-family-primary);
+  color: var(--ae-text-strong);
+  overflow: hidden;
+}
+
+.auto-edit-page__body {
+  flex: 1 0 0;
+  min-height: 0;
+  display: flex;
+}
+
+.auto-edit-page__main {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+}
+
+/* Shared mask-icon helper (see AutoEditIcon.tsx) */
+.auto-edit-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* Panel narrows 400px -> 300px somewhere between the project's 1024 and 768
+   reference widths (Figma tests 1024=400px, 992=300px — no exact pixel
+   confirmed; see auto-edit-spec-responsive.md open question #1). Using the
+   project's own 1024 checkpoint as the upper edge, per that doc's recommendation.
+   (Selector is `.auto-edit-panel` — that's AutoEditPanel.css's own root class.) */
+@media (max-width: 1023px) {
+  .auto-edit-panel {
+    width: 300px !important;
+  }
+}
+
+/* Below this, panel+canvas stacking and the sidebar are NOT covered by any
+   Figma frame (Figma's spec stops at 769px; the nearby 414px frames are a
+   structurally different, unrelated mobile template — see
+   auto-edit-spec-responsive.md section 3). Per this project's own rule that
+   undesigned mobile behavior must be proposed and confirmed before fine
+   detail is built, this breakpoint only guarantees "no horizontal scroll,
+   everything reachable by scrolling" — it is NOT a polished mobile layout. */
+@media (max-width: 768px) {
+  .auto-edit-page__body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .auto-edit-page__main {
+    flex-direction: column;
+  }
+
+  .auto-edit-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-right: none;
+    border-bottom: 1px solid var(--ae-stroke-weak);
+  }
+
+  .auto-edit-panel {
+    width: 100% !important;
+    border-right: none;
+    border-bottom: 1px solid var(--ae-stroke-weak);
+    /* .auto-edit-panel__scroll below uses flex:1 0 0 to fill the panel's
+       height and scroll internally — that only resolves correctly when this
+       panel has a definite height of its own (true in the desktop side-by-side
+       layout, stretched by the row flex parent). Once everything stacks into
+       one column here, this panel's height would otherwise be resolved from
+       its flex-basis-0 child first, collapsing it to near-nothing (the same
+       class of bug fixed in AutoEditModals.css). Simplest correct fix for
+       this "just keep it usable" mobile tier: stop nesting a second scroll
+       region and let the whole stacked page scroll as one instead. */
+    max-height: none !important;
+  }
+
+  .auto-edit-panel__scroll {
+    flex: none;
+    overflow-y: visible;
+  }
+
+  .auto-edit-panel__footer {
+    box-shadow: none;
+  }
+}
